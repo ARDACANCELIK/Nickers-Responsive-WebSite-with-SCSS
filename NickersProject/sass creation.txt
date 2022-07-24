@@ -1,0 +1,23 @@
+önce command promptta  proje dosyanın içine " npm init" ile package json yerleştiriyorsun
+daha sonra yine command prompta "npm install node-sass --save-dev" diyorsun
+
+dosyaya dikkatli bakarsan bir sürü node modules görürsün (projeni  paylaşmak isterken binlerce dosya
+olan node modulesu silebilirsin bu projeyi alan ve üzerinde çalışan birisi package jsondan tüm gerekli node modulesu yükleyebilir. 
+nasıl mı :  sadece  "npm install" yazarak tabi ki 
+
+sonra proje içinde sass dosyası yapıp  tüm css'i  sass dosyası içindeki scss uzantılı bir file'a taşı  "style.scss" gibi 
+ardında kodunu yaz  sıra compile yapmaya gelince package json içinde scripts'e gelip  "compile:sass":"node-sass sass/style.scss css/style.css"  yani overwrite the file yapıyorsun
+ardından command prompt'a yahut vscode terminale gidip "npm run compile:sass" diyorsun
+
+
+____________
+fOR AUTOMATİC RELOAD PAGES : npm install live-server -g  olmazsa aynı emir başta sudo olacak //bu bir global package 
+tek yapman gereken  live-server yazman  command prompta 
+
+
+
+
+
+
+tıpkı npm install jquery gibi 
+

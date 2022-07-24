@@ -1,0 +1,36 @@
+radios kısmına yazılabilir
+
+
+// .radio-button {
+//   position: absolute;
+//   display: inline-block;
+//   height: 2.8rem;
+//   width: 2.7rem;
+//    border: 5px solid rgba(100, 235, 10, 0.63);
+//   border-radius: 50%;
+//   left: -2rem;
+//    top: -4rem;
+// }
+
+// .radio-button::after {
+//   content: "";
+//   display: block;
+//   height: 1rem;
+//   width: 1rem;
+//   border-radius: 50%;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   background-color: red;
+//   opacity: 0;
+//   transition: opacity 0.2s;
+// }
+// .form-radio {
+// display: none;
+// }
+
+// .form-radio:checked  &-radio-label &-radio-button::after {
+//   opacity: 1;
+
+// }

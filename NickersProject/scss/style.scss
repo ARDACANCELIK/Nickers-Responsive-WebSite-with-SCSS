@@ -1,0 +1,1514 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+$color-primary: aliceblue;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Caveat", cursive, "Segoe UI", Tahoma, Geneva, Verdana,
+    sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  /* padding: 29px; */
+}
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+img:not(.logo, .logo-box, .logosecond) {
+  width: 70%;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.header {
+  /* logo box için parent element o yüzden relative */
+  position: relative;
+  height: 95vh;
+  background-image: linear-gradient(
+      to left top,
+      rgba(148, 185, 240, 0.582),
+      #1c62a396
+    ),
+    url(../img/hero1.jpg);
+  background-size: cover;
+  /* ekran boyu değişssede  resimin topu hep pozisyon olarak sabit  */
+  background-position: top;
+  clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 92%, 0 100%, 0% 0%, 0 0);
+}
+
+.logo-box {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+}
+
+.logosecond {
+  height: 3rem;
+  /* widthe gerek yok çünkü otomatik düzenliyor height varken  */
+  opacity: 0.8;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2) rotate(4deg);
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .logo-box {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+    transform: scale(0.6);
+  }
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  /* span is inline thats wht we have to display block */
+  color: $color-primary;
+  text-transform: uppercase;
+  /* //blocking shaking */
+  backface-visibility: hidden;
+  margin-bottom: 60px;
+  &-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 600;
+    letter-spacing: 35px;
+    animation-name: nicker;
+    animation-duration: 3s;
+  }
+  &-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    animation-name: nicker2;
+    animation-duration: 3s;
+  }
+}
+
+@keyframes nicker {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes nicker2 {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@keyframes button {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.btn {
+  color: rgb(151, 144, 144);
+  text-decoration: none;
+  border: none;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 5%;
+  margin: 1.25rem;
+  font-size: 20px;
+  border-radius: 100px;
+  transition: all 0.2s;
+  position: relative;
+  animation: button 0.5s ease-in-out;
+  background-color: rgba(240, 248, 255, 0.747);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px;
+    color: rgb(128, 123, 123);
+    background-color: $color-primary;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* relative ise link ve visited buttonu olacak */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+    background-color: rgba(232, 240, 247, 0.568);
+  }
+  &:hover::after {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+//Navigation Option   1
+
+// @import url('https://fonts.googleapis.com/css?family=Merriweather:900&display=swap');
+
+// :root {
+//   --color-primary: #002626;
+//   --color-secondary: #F0F7EE;
+//   --duration: 1s;
+//   --nav-duration: calc(var(--duration) / 4);
+//   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+//   --space: 1rem;
+//   --font-primary: 'Helvetica', sans-serif;
+//   --font-heading: 'Merriweather', serif;
+//   --font-size: 1.125rem;
+//   --line-height: 1.5;
+// }
+
+// * {
+//   box-sizing: border-box;
+// }
+
+// body {
+//   font-family: var(--font-primary);
+//   font-size: var(--font-size);
+//   line-height: var(--line-height);
+// }
+
+// h1 {
+//   margin-bottom: calc(var(--space) * 3);
+//   font-family: var(--font-heading);
+//   font-size: calc(var(--font-size) + 6vmin);
+//   line-height: calc(var(--line-height) / 1.25);
+// }
+
+// .main-navigation-toggle {
+//   position: fixed;
+//   height: 1px;
+//   width: 1px;
+//   overflow: hidden;
+//   clip: rect(1px, 1px, 1px, 1px);
+//   white-space: nowrap;
+
+//   + label {
+//     position: fixed;
+//     top: calc(var(--space) * 1.5);
+//     right: calc(var(--space) * 2);
+//
+//     z-index: 2;
+//   }
+// }
+
+// .icon--menu-toggle {
+//   --size: calc(1rem + 4vmin);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   width: var(--size);
+//   height: var(--size);
+//   stroke-width: 6;
+// }
+
+// .icon-group {
+//   transform: translateX(0);
+//   transition: transform var(--nav-duration) var(--ease);
+// }
+
+// .icon--menu {
+//   stroke: var(--color-primary);
+// }
+
+// .icon--close {
+//   stroke: var(--color-secondary);
+//   transform: translateX(-100%);
+// }
+
+// .main-navigation {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   display: flex;
+//   align-items: center;
+//   width: 100%;
+//   height: 100%;
+//   transform: translateX(-100%);
+//   transition: transform var(--nav-duration);
+//   z-index: 1;
+
+//   &:after {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: var(--color-primary);
+//     transform-origin: 0 50%;
+//     z-index: -1;
+//   }
+
+//   ul {
+//     font-size: 12vmin;
+//     font-family: var(--font-heading);
+//     width: 100%;
+//   }
+
+//   li {
+//     --border-size: 1vmin;
+//     display: flex;
+//     align-items: center;
+//     position: relative;
+//     overflow: hidden;
+
+//     &:after {
+//       content: '';
+//       position: absolute;
+//       bottom: 0;
+//       left: 0;
+//       width: 100%;
+//       height: var(--border-size);
+//       background-color: var(--color-secondary);
+//       transform-origin: 0 50%;
+//       transform: translateX(-100%) skew(15deg);
+//     }
+//   }
+
+//   a {
+//     display: inline-block;
+//     width: 100%;
+//     max-width: 800px;
+//     margin: 0 auto;
+//     color: var(--color-secondary);
+//     line-height: 1;
+//     text-decoration: none;
+//     user-select: none;
+//     padding: var(--space) calc(var(--space) * 2) calc(var(--space) + var(--border-size) / 2);
+//     transform: translateY(100%);
+//   }
+// }
+
+// .main-content {
+//   margin: 6rem auto;
+//   max-width: 70ch;
+//   padding: 0 calc(var(--space) * 2);
+//   transform: translateX(0);
+//   transition: transform calc(var(--nav-duration) * 2) var(--ease);
+
+//   > * + * {
+//     margin-top: calc(var(--space) * var(--line-height));
+//   }
+// }
+
+// .main-navigation-toggle:checked {
+//   ~ label .icon--menu-toggle {
+//     .icon-group {
+//       transform: translateX(100%);
+//     }
+//   }
+
+//   ~ .main-content {
+//     transform: translateX(10%);
+//   }
+
+//   ~ .main-navigation {
+//     transition-duration: 0s;
+//     transform: translateX(0);
+
+//     &:after {
+//       animation: nav-bg var(--nav-duration) var(--ease) forwards;
+//     }
+
+//     li:after {
+//       animation: nav-line var(--duration) var(--ease) forwards;
+//     }
+
+//     a {
+//       animation: link-appear calc(var(--duration) * 1.5) var(--ease) forwards;
+//     }
+
+//     @for $i from 1 through 4 {
+//       li:nth-child(#{$i}) {
+//         &:after, a {
+//           animation-delay: calc((var(--duration) / 2) * #{$i} * 0.125);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @keyframes nav-bg {
+//   from { transform: translateX(-100%) skewX(-15deg) }
+//   to { transform: translateX(0) }
+// }
+
+// @keyframes nav-line {
+//   0%   { transform: scaleX(0); transform-origin: 0 50%; }
+//   35%  { transform: scaleX(1.001); transform-origin: 0 50%; }
+//   65%  { transform: scaleX(1.001); transform-origin: 100% 50%; }
+//   100% { transform: scaleX(0); transform-origin: 100% 50%; }
+// }
+
+// @keyframes link-appear {
+//   0%, 25%   { transform: translateY(100%); }
+//   50%, 100% { transform: translateY(0); }
+// }
+
+//end of Navigation  Option 1
+///________________________________________
+///
+//Navigation Option 2
+
+.navigation-background {
+  // hide from the begginning
+  // transform: scale(100);
+  //beyaz yuvarlak  hamburger çizgi arkasındaki beyazın arkasına saklanan genişleyecek olan efekt
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  position: fixed;
+  // background-color: white;
+  top: 3rem;
+  right: 3rem;
+  z-index: 1000;
+  background-image: radial-gradient(rgb(14, 166, 216), rgb(38, 38, 146));
+  // efekt etkisi için
+  transition: transform 0.9s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.nav-button {
+  //beyaz yuvarlak  hamburger çizgi arkasındaki beyaz
+  background-color: white;
+  //ın order to cover rdial blue background of navigation
+  height: 4rem;
+  width: 4rem;
+  position: fixed;
+  top: 2.5rem;
+  right: 2.5rem;
+  border-radius: 50%;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.103);
+  z-index: 2001;
+  // hamburger çizgileri için
+  text-align: center;
+  cursor: pointer;
+}
+.navigation-checkbox {
+  display: none;
+}
+.navigation-nav {
+  // başlangıçta saklıyoruz, hide from the begginning
+  //  opacity: 0;
+  //  width: 0;
+  // or
+  //display: none;
+  //navigasyon linklerinin içine gömülü olan alan arka fondan önde buttondan arkada olan layer
+  height: 100vh;
+  // width: 100%; //saklama için kaldırdım
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  //saklama için
+  opacity: 0;
+  width: 0;
+  // efekt etkisi
+  transition: all 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navigation-list {
+  //this is what we gonna center inside navigation-nav
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center;
+  // efekt açılması sonrası kaymaya karşı
+  width: 100%;
+}
+.navigation-link {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  // text arkasıdaki hareketli beyaz
+  background-image: linear-gradient(
+    150deg,
+    transparent 0%,
+    transparent 50%,
+    white 50%
+  );
+  background-size: 290%;
+  transition: all 0.9s;
+
+  &:hover {
+    background-position: 100%;
+    color: rgb(14, 166, 216);
+
+    transform: translateX(1rem);
+  }
+}
+.navigation-item {
+  margin: 1rem;
+}
+.navigation {
+  // general sibling ile checkboxdan navigation backgroundu seçmek istiyoruz
+  &-checkbox:checked ~ &-background {
+    transform: scale(400);
+  }
+  &-checkbox:checked ~ &-nav {
+    opacity: 1;
+    width: 100%;
+    // display:block alternatifi
+  }
+}
+
+// .nav-toggle {
+// }
+
+.navigation-icon {
+  position: relative;
+  margin-top: 2rem;
+
+  &,
+  &::before,
+  &::after {
+    width: 2rem;
+    height: 1.5px;
+    background-color: #333;
+    display: inline-block;
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    // bu transition effecti hamburger çizgilerine hover yapıldığında daralma efekti için aşağıdaki kodlara biçim veriyor
+    transition: all 0.2s;
+  }
+  &::before {
+    top: -0.5rem;
+  }
+  &::after {
+    top: 0.5rem;
+  }
+}
+
+//nav btn hamburger x effect (icon button'un childe elementi olduğu için mümkün
+.nav-button:hover .navigation-icon::before {
+  top: 1px;
+}
+.nav-button:hover .navigation-icon::after {
+  top: -1px;
+}
+
+// hamburgeri ful x yapma siblingi kulannarak onu etkileyeceğiz yani checkbox checked olunca onun kardeşi nav buttonu ve onunda kardeşi iconu seçiyoruz
+.navigation-checkbox:checked + .nav-button .navigation-icon {
+  background-color: transparent;
+}
+.navigation-checkbox:checked + .nav-button .navigation-icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+.navigation-checkbox:checked + .nav-button .navigation-icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+
+// label  nav buttona basınca checkbox checked oluyor ve nav background devreye giriyor tü mesele bu
+
+//End of  Navigation Option 2
+
+/// section 1- About
+///
+///
+///
+
+.starter {
+  position: relative;
+  // height: 95vh;
+  padding: 5rem 0;
+  margin-top: 8vh;
+}
+
+.center-text {
+  text-align: center; //child olan h2 inline block olduğundan parenti  text align center yapınca hemen
+  //center oldu
+}
+
+.section-center {
+  width: 90vw;
+  /* böylece resmi ortaladı  */
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+.about-img,
+.about-info {
+  margin-bottom: 2rem;
+}
+
+.heading-secondary {
+  display: block;
+  font-size: 3.5rem;
+  color: rgba(10, 73, 136, 0.699);
+  text-transform: uppercase;
+  font-weight: 700;
+  // aşağıdaki üç kod arka fonu yazı  rengine dönüştürüyor
+  display: inline-block;
+  background-image: linear-gradient(
+    to left,
+    rgba(43, 130, 216, 0.986),
+    rgba(12, 40, 116, 0.877)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    transform: scale(0.95);
+  }
+}
+
+.heading-3 {
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+// .btn-about {
+//   border-radius: 100px;
+//   border-color: none;
+//   border: none;
+//   box-shadow: 0 10px 20px;
+//   margin: 1.25rem;
+//   padding: 0.65rem;
+//   font-size: 1.2rem;
+//   transition: all 0.2s;
+//   background-color: #1c62a396;
+//   color: aliceblue;
+// }
+
+.btn-about {
+  margin: 1rem auto;
+  width: 140px;
+  height: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #0e4477d2;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-about:hover {
+  background-color: #0986ec;
+  box-shadow: 0px 15px 20px rgba(6, 21, 240, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+p {
+  padding: 1rem;
+  // max-width: 400px;
+  font-size: 1.2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* şimdi column layoutunu flexbox ile yapacak  */
+@media screen and (min-width: 992px) {
+  .section-center {
+    display: flex;
+    /* böylece resim ile yazı  yan yana gelebildi daha önce resim üstte yazı alttaydı */
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  /* children target  yapmış oldu  felx için mecbur */
+  .about-img,
+  .about-info {
+    flex: 0 0 calc(50% - 2rem);
+    /* children büyümüyor ,küçülmüyor , iki kolonlu layout olduğu için  ve 2 rem boşluk bu boşluk resim ile yazı arasında değil şu an en sağda toplanmı vaziyette dolayısı ile yukarıda about centera bir üst parenta gidip justify content sapce between yapıyor garanti olsun diye de wrapliyor */
+
+    margin-bottom: 0;
+    /* bu margine gerek yok ekran büyüdüğünde ve column layoutumuz olduğu için büyük ekranda */
+    align-self: center;
+    /* child'i centera çekiyor böylece büyük ekranda resimin yanındaki yazı resimin sağ ortasında iniyor  eskiden kafa kafaya yan yana idi */
+  }
+}
+
+@media screen and (min-width: 1170px) {
+  /* image targetlayamadığı için onun için özel oluşturlmuş article parentta işlem yapacak yapılan şey ise resimin arkasına pencere çekiyor ekran büyükken */
+  .about-img::before {
+    content: "";
+    // position: absolute;
+    border: 0.5rem solid var(--clr-primary-5);
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    top: -1.5rem;
+    left: -1.5rem;
+    z-index: -1;
+  }
+  .about-img {
+    position: relative;
+  }
+  /* stacking order için bunu relative yapıyor */
+  .about-photo {
+    position: relative;
+  }
+}
+
+.pic-3 {
+  bottom: 14rem;
+  left: 40%;
+  border-radius: 20px;
+  z-index: 997;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    z-index: 1000;
+    transform: scale(1.2);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+  }
+}
+.pic-2 {
+  bottom: 5rem;
+  z-index: 998;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    z-index: 1000;
+    transform: scale(1.2);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+  }
+}
+.pic-1 {
+  top: 2rem;
+  left: 20%;
+  border-radius: 20px;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    z-index: 1000;
+    transform: scale(1.2);
+    box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+  }
+}
+
+.about-img:hover {
+  .about-photo:not(:hover) {
+    transform: scale(0.8);
+  }
+}
+
+///features
+///
+///
+.features {
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to left top,
+      rgba(148, 185, 240, 0.582),
+      rgba(8, 45, 100, 0.582)
+    ),
+    url(/img/camping/camping4.jpg);
+  background-size: cover;
+  // object-fit: cover;
+  clip-path: polygon(0 20%, 100% 0, 99% 84%, 0% 100%);
+}
+
+.tour-info {
+  // max-width: 5rem;
+  border-radius: 10px;
+  margin: 2.5rem 1.25rem;
+  padding: 2rem 1.2rem;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.tour-card {
+  transition: all 01s ease-out;
+  // margin: auto;
+
+  // padding: 1.4rem 1rem;
+
+  margin-bottom: 2rem;
+  text-align: center;
+  align-content: center;
+}
+.tour-card:hover {
+  // top: 10px;
+  // transform: translateY(-1.5rem);
+  transform: scale(1.1);
+}
+// .tour-info:hover {
+//   // top: 5px;
+//   // transform: scale(1.05);
+// }
+
+.icon-basic-clessidre {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background-image: linear-gradient(
+    to left,
+    rgba(43, 130, 216, 0.986),
+    rgba(12, 40, 116, 0.877)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.icon-basic-geolocalize-05 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background-image: linear-gradient(
+    to left,
+    rgba(43, 130, 216, 0.986),
+    rgba(12, 40, 116, 0.877)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.icon-basic-video {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background-image: linear-gradient(
+    to left,
+    rgba(43, 130, 216, 0.986),
+    rgba(12, 40, 116, 0.877)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* colum layouta geçiyoruz  */
+@media screen and (min-width: 768px) {
+  .featured-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tour-card {
+    flex: 0 0 calc(50% - 2rem);
+  }
+}
+@media screen and (min-width: 1170px) {
+  .tour-card {
+    flex: 0 0 calc(33.333% - 2rem);
+  }
+}
+
+//plans section
+.section-plans {
+  padding: 5rem 0;
+}
+
+.section-center {
+  width: 90vw;
+  margin: 05rem auto;
+  max-width: 1170px;
+}
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
+}
+
+//sonradan ben ekledim
+@media screen and (max-width: 991px) {
+  .section-center {
+    width: 50%;
+  }
+}
+////
+.blog {
+  background: rgb(16, 124, 196);
+}
+.card {
+  height: 27rem;
+  /* bir yüksekliği olması lazım çünkü childlar için position absolute kullanıyoruz ve herşeyi collapse yapıyor bu */
+  position: relative;
+  perspective: 1500px;
+  margin-right: 2rem;
+  padding: 1rem;
+}
+
+.card-front {
+  background: linear-gradient(to left top, rgb(3, 6, 48), #4e6ef8);
+  transition: all 1.2s linear;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+.card-back {
+  /* transition: all 1.2s linear; */
+  background: linear-gradient(to left top, rgba(7, 204, 7, 0.582), #0d723496);
+  transform: rotateY(180deg);
+  /* kart arkası read moreu  ortaya sabitlemek için */
+  display: grid;
+  place-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+.card:hover .card-front {
+  transform: rotateY(-180deg);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+.card:hover .card-back {
+  transform: rotateY(0);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+.card-side {
+  backface-visibility: hidden;
+  transition: all 0.4s linear;
+  position: absolute;
+  /* position absolute kullanıyoruz */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.card-front img {
+  height: 13rem;
+  width: 100%;
+  object-fit: cover;
+  // background-image: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-info {
+  padding: 1rem 1.5rem;
+}
+
+.blog-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  /* media querisiz yaptı bu sefer */
+  gap: 3rem 1rem;
+  /* 3rem rows için 1 rem column için */
+}
+
+.card-heading {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 1.6rem;
+  color: rgb(226, 226, 226);
+}
+
+.card-text {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(226, 226, 226);
+}
+
+.btn-card {
+  margin: 1rem auto;
+  width: 140px;
+  height: 45px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  color: rgb(78, 78, 82);
+  background-color: #f0f0e8d2;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.1s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-card:hover {
+  background-color: #f0f0e8d2;
+  box-shadow: 0px 15px 20px rgba(68, 69, 71, 0.4);
+  color: rgb(78, 78, 82);
+  transform: translateY(-7px);
+}
+
+.card-img {
+  // clip-path: polygon(0 0, 100% 0%, 100% 90%, 0 100%);
+  clip-path: polygon(50% 0%, 100% 0, 100% 100%, 50% 84%, 0 100%, 0 0);
+}
+
+/// testimonials  section
+///
+///
+.testimonials {
+  background-color: aliceblue;
+  padding: 15rem 0;
+}
+
+.testimonial {
+  width: 75%;
+  margin: 0 auto; //because block element inside a block element
+  box-shadow: 0 2.8rem 5.4rem rgba(36, 3, 3, 0.15);
+  background-color: #fff;
+  border-radius: 2.9px;
+  padding: 6.1rem;
+  // padding-left: 9rem;
+  font-size: 1.6rem;
+  // transform: skewX(-4deg);
+  clip-path: polygon(4% 0, 100% 0%, 96% 100%, 0% 100%);
+}
+
+.test-heading {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.persona {
+  // transform: skewX(4deg);
+  position: relative; //aşağıdaki absolut için
+  width: 23rem;
+  height: 16rem;
+  float: left;
+  clip-path: polygon(4% 0, 100% 0%, 96% 100%, 0% 100%);
+  shape-outside: circle(30%);
+  clip-path: circle(25%);
+  // transform: translateX(3rem);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    .caption {
+      //marta yazısı için
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+    .test-img {
+      transform: scale(1.2);
+      filter: blur(3px) brightness(90%);
+    }
+  }
+}
+
+.test-img {
+  //  object-fit: cover;
+
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.4);
+}
+.row {
+  padding: 3rem;
+}
+
+.caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 25%);
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 1.66rem;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+// video için
+// .bg-video {
+//   // testimonialsı relative yapman lazım ve orada backgroundcolor'u kaldırman lazım
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   height: 100%;
+//   width: 100%;
+//   z-index: -1;
+//   opacity: 0.15;
+//   overflow:hidden
+// }
+//  .testimonial-video{
+//   height: 100%;
+//   width: 100%;
+//   object-fit: cover;
+//  }
+
+@media screen and (max-width: 991px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .testimonial {
+    flex: content;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .text-testimonial {
+    float: left;
+  }
+  .test-heading {
+    float: left;
+  }
+  .persona {
+    float: left;
+  }
+  .test-img {
+    justify-self: center;
+  }
+}
+
+//____________________________________
+// Contact section
+
+.heading-contact {
+  display: block;
+  font-size: 3.5rem;
+  color: rgba(10, 73, 136, 0.699);
+  text-transform: uppercase;
+  font-weight: 600;
+  // aşağıdaki üç kod arka fonu yazı  rengine dönüştürüyor
+
+  background-image: linear-gradient(
+    to left,
+    rgba(43, 130, 216, 0.986),
+    rgba(12, 40, 116, 0.877)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.4s ease-in-out;
+  &:hover {
+    transform: scale(0.95);
+  }
+}
+
+.section-contact {
+  padding: 14rem 0;
+  background-image: linear-gradient(
+    to left top,
+    rgba(224, 143, 21, 0.616),
+    rgba(185, 248, 10, 0.753)
+  );
+}
+
+.contact {
+  background-image: linear-gradient(
+      75deg,
+      rgba(236, 229, 229, 0.9) 0%,
+      rgba(236, 229, 229, 0.6) 50%,
+      transparent 50%
+    ),
+    url(/img/camping/camping7.jpg);
+  background-size: cover;
+  // object-fit: cover;
+  height: 50rem;
+  border-radius: 4px;
+  box-shadow: 0 1.5rem 4rem rgba(3, 6, 48, 0.616);
+  // filter:  brightness(40%);
+
+  &-form {
+    width: 50%;
+    padding: 6rem;
+    text-align: center;
+  }
+}
+
+.form {
+  position: relative;
+  &-unit:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &-input {
+    display: block;
+    width: 90%;
+    font-size: 2.4rem;
+    font-family: inherit;
+    color: inherit;
+    padding: 0 2rem;
+    border-radius: 2px;
+    background-color: rgba(241, 223, 223, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    margin: 4rem;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.123);
+      border-bottom: 3px solid rgba(8, 156, 45, 0.589);
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid rgba(236, 40, 5, 0.589);
+    }
+  }
+
+  &-label {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+  }
+  &-input:placeholder-shown + &-label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  // Radios
+
+  // &-unit-radio {
+  //   width: 49%;
+  //   display: inline-block;
+  // }
+
+  // &-radio-input {
+  //   cursor: default;
+  // }
+
+  // &-radio-label {
+  //   text-transform: capitalize;
+  //   font-size: 1.8rem;
+  //   padding: 3rem;
+  //   position: relative;
+  //   padding: 0.2rem;
+  //   padding-left: 2.5rem;
+
+  // }
+}
+
+.ali {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.btn-contact {
+  display: inline-block;
+  left: 7rem;
+  color: rgb(151, 144, 144);
+  text-decoration: none;
+  border: none;
+  text-transform: uppercase;
+  padding: 15px 40px;
+  border-radius: 5%;
+  margin: 3.25rem 5rem;
+  font-size: 20px;
+  border-radius: 100px;
+  transition: all 0.2s;
+
+  animation: button 0.5s ease-in-out;
+  background-color: rgba(240, 248, 255, 0.747);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px;
+    color: rgb(128, 123, 123);
+    background-color: $color-primary;
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    /* relative ise link ve visited buttonu olacak */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+    background-color: rgba(232, 240, 247, 0.568);
+  }
+  &:hover::after {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 791px) {
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  // .contact{
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //  justify-content: center;
+  // }
+  // .contact-form {
+
+  //   justify-content: center;
+  // }
+  .ali {
+    position: relative;
+  }
+  .heading-contact {
+    display: inline;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .btn-contact {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .form-unit {
+    // flex: 0 0 calc(50% - 2rem);
+  }
+}
+// footer
+
+.footer {
+  background: #1c1c1e;
+  text-align: center;
+  /* zaten globals dan padding alıyor bir nebze o yuzden top bottom yapmadı */
+  padding: 6rem 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  font-size: 1.4rem;
+}
+
+.logo-boxo {
+  // margin-bottom: 8rem;
+
+  text-align: center;
+  width: 15rem;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.logosecond2 {
+  margin: 0 auto;
+}
+
+// .footer-navigation {
+// }
+
+.footer-list {
+  list-style: none;
+}
+.footer-item {
+  display: inline-block;
+}
+.footer-item:not(:last-child) {
+  margin-right: 1.5rem;
+}
+
+.footer-link {
+  &:link,
+  &:visited {
+    color: rgb(228, 222, 222);
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+}
+.footer-copyright {
+  font-family: inherit;
+}
+
+.arda {
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+  color: rgba(16, 159, 202, 0.801);
+  background: #1c1c1e;
+}
+.arda:hover {
+  transform: scale(3) rotate(360deg);
+}
+
+.footer-link {
+  transition: all 0.3s ease-in-out;
+}
+.footer-link:hover {
+  transform: scale(1.4) rotate(3deg);
+}
+
+// POPUP SECTION
+
+// popup section
+// @mixin absoluteCenter {
+//   position: absolute;
+//   top:50%;
+//   left:50%;
+//   transform: translate(-50% ,50%);
+
+// }
+
+.popup {
+  // position: relative;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 3000;
+  backdrop-filter: blur(10px);
+  //saklıyoruz şimdi //display none olursa animasyon zor
+  opacity: 0;
+  visibility: hidden;
+  // width: 0;
+  transition: all 0.3s ease-in-out;
+
+  &-content {
+    // @include absoluteCenter;
+    width: 55%;
+    // height: 50rem; //just for testing purposes
+    background-color: rgba(252, 239, 239, 0.959);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // transform: translate(-50%, -50%); aşağıdaki ile combine ediyor
+    border-radius: 3px;
+    // display: table;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 400px;
+    min-height: 200px;
+    // popup'un bize doğru geliş şekli için
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+    transition: all 0.5s 0.2s;
+  }
+
+  &-left {
+    width: 33.33333333%;
+    // float: left; //alternatif to table
+    //  display: table-cell;
+    display: block;
+    align-items: center;
+    overflow: hidden;
+    // justify-content: flex-start;
+  }
+
+  &-left img {
+    object-fit: cover;
+    width: 70%;
+  }
+  &-img {
+    display: block; //yeni
+    height: 50%;
+    width: 100%; //en yeni
+  }
+  &-right {
+    display: block;
+    text-align: center;
+    align-items: center;
+    width: 66.666666667%;
+
+    align-self: center;
+    justify-content: center;
+
+    // float: left; alternative to table
+    //  display: table-cell;
+  }
+
+  &-text {
+    align-self: center;
+    line-height: 1.5rem;
+    margin-right: 0.2rem;
+    //  column-count: 2;
+    hyphens: auto;
+  }
+  &-3 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2rem;
+  }
+
+  &-2 {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    color: rgba(9, 109, 209, 0.719);
+  }
+  //when states are open
+  &:target {
+    //  width: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+  &:target &-content {
+    opacity: 1;
+
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &-close {
+    // &:link,
+    // &:visited {
+    display: inline-block;
+    color: #777;
+    position: absolute;
+    top: -5px;
+    right: 20px;
+    font-size: 3.5rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    line-height: 1;
+    // width: 10%;
+    // height: 10vh;
+
+    // }
+    &:hover {
+      color: #0986ec;
+    }
+  }
+}
